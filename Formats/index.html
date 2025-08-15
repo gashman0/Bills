@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Onboarding</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f8;
+        padding: 20px;
+    }
+    .container {
+        max-width: 600px;
+        margin: auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    label {
+        display: block;
+        margin: 10px 0 5px;
+    }
+    input, select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    button {
+        background: #007bff;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        width: 100%;
+        font-size: 16px;
+    }
+    button:hover {
+        background: #0056b3;
+    }
+    .success {
+        display: none;
+        text-align: center;
+        padding: 20px;
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+        border-radius: 4px;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Employee Onboarding</h2>
+    <form id="onboardingForm">
+        <label>Full Name *</label>
+        <input type="text" name="fullname" required>
+
+        <label>Email *</label>
+        <input type="email" name="email" required>
+
+        <label>Phone *</label>
+        <input type="tel" name="phone" required>
+
+        <label>Position Applied For *</label>
+        <input type="text" name="position" required>
+
+        <label>Upload Resume *</label>
+        <input type="file" name="resume" accept=".pdf,.doc,.docx" required>
+
+        <label>Upload ID (Passport/Driver’s License) *</label>
+        <input type="file" name="id" accept=".jpg,.jpeg,.png,.pdf" required>
+
+        <button type="submit">Submit</button>
+    </form>
+
+    <div class="success" id="successMessage">
+        ✅ Onboarding information submitted successfully!
+    </div>
+</div>
+
+<script>
+    document.getElementById("onboardingForm").addEventListener("submit", function(e) {
+        e.preventDefault();
+
+        let form = e.target;
+        if (!form.checkValidity()) {
+            alert("Please fill all required fields.");
+            return;
+        }
+
+        form.style.display = "none";
+        document.getElementById("successMessage").style.display = "block";
+    });
+</script>
+
+</body>
+</html>

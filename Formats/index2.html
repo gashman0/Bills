@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee Onboarding</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f6f8;
+        padding: 20px;
+    }
+    .container {
+        max-width: 600px;
+        margin: auto;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h2 {
+        text-align: center;
+        margin-bottom: 20px;
+    }
+    label {
+        display: block;
+        margin: 10px 0 5px;
+    }
+    input, select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+    }
+    button {
+        background: #007bff;
+        color: #fff;
+        padding: 10px 15px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin: 5px;
+    }
+    button:hover {
+        background: #0056b3;
+    }
+    .step {
+        display: none;
+    }
+    .step.active {
+        display: block;
+    }
+    .buttons {
+        text-align: center;
+    }
+    .success {
+        display: none;
+        text-align: center;
+        padding: 20px;
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+        border-radius: 4px;
+    }
+    /* Progress bar */
+    .progressbar {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        counter-reset: step;
+    }
+    .progressbar li {
+        list-style: none;
+        width: 33%;
+        position: relative;
+        text-align: center;
+        font-weight: bold;
+    }
+    .progressbar li:before {
+        content: counter(step);
+        counter-increment: step;
+        width: 30px;
+        height: 30px;
+        border: 2px solid #ccc;
+        display: block;
+        margin: 0 auto 10px;
+        border-radius: 50%;
+        line-height: 26px;
+        background-color: white;
+    }
+    .progressbar li:after {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 2px;
+        background-color: #ccc;
+        top: 15px;
+        left: -50%;
+        z-index: -1;
+    }
+    .progressbar li:first-child:after {
+        content: none;
+    }
+    .progressbar li.active:before {
+        border-color: #007bff;
+        background-color: #007bff;
+        color: white;
+    }
+    .progressbar li.active + li:after {
+        background-color: #007bff;
+    }
+</style>
+</head>
+<body>
+
+<div class="container">
+    <h2>Employee Onboarding</h2>
+
+    <ul class="progressbar">
+        <li class="active">Personal Info</li>
+        <li>Documents</li>
+        <li>Review</li>
+    </ul>
+
+    <form id="onboardingForm">
+        
+        <!-- Step 1 -->
+        <div class="step active">
+            <label>Full Name *</label>
+            <input type="text" name="fullname" required>
+            <label>Email *</label>
+            <input type="email" name="email" required>
+            <label>Phone *</label>
+            <input type="tel" name="phone" required>
+            <label>Position Applied For *</label>
+            <input type="text" name="position" required>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="step">
+            <label>Upload Resume *</label>
+            <input type="file" name="resume" accept=".pdf,.doc,.docx" required>
+            <label>Upload ID *</label>
+            <input type="file" name="id" accept=".jpg,.jpeg,.png,.pdf" required>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="step">
+            <h3>Review Your Details</h3>
+            <p><strong>Name:</strong> <span id="reviewName"></span></p>
+            <p><strong>Email:</strong> <span id="reviewEmail"></span></p>
+            <p><strong>Phone:</strong> <span id="reviewPhone"></span></p>
+            <p><strong>Position:</strong> <span id="reviewPosition"></span></p>
+        </div>
+
+        <!-- Buttons -->
+        <div class="buttons">
+            <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button>
+            <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+        </div>
+
+    </form>
+
+    <div class="success" id="successMessage">
+        ✅ Onboarding information submitted successfully!
+    </div>
+</div>
+
+<script>
+    let currentStep = 0;
+    let steps = document.querySelectorAll(".step");
+    let progressbar = document.querySelectorAll(".progressbar li");
+
+    function showStep(n) {
+        steps.forEach((step, index) => {
+            step.classList.toggle("active", index === n);
+        });
+        progressbar.forEach((li, index) => {
+            li.classList.toggle("active", index <= n);
+        });
+
+        document.getElementById("prevBtn").style.display = n === 0 ? "none" : "inline-block";
+        document.getElementById("nextBtn").textContent = n === steps.length - 1 ? "Submit" : "Next";
+    }
+
+    function nextPrev(n) {
+        if (n === 1 && !validateForm()) return;
+
+        currentStep += n;
+
+        if (currentStep >= steps.length) {
+            document.getElementById("onboardingForm").style.display = "none";
+            document.getElementById("successMessage").style.display = "block";
+            return;
+        }
+
+        if (currentStep === 2) {
+            document.getElementById("reviewName").textContent = document.querySelector('[name="fullname"]').value;
+            document.getElementById("reviewEmail").textContent = document.querySelector('[name="email"]').value;
+            document.getElementById("reviewPhone").textContent = document.querySelector('[name="phone"]').value;
+            document.getElementById("reviewPosition").textContent = document.querySelector('[name="position"]').value;
+        }
+
+        showStep(currentStep);
+    }
+
+    function validateForm() {
+        let inputs = steps[currentStep].querySelectorAll("input[required]");
+        for (let input of inputs) {
+            if (!input.value) {
+                alert("Please fill all required fields.");
+                return false;
+            }
+        }
+        return true;
+    }
+
+    showStep(currentStep);
+</script>
+
+</body>
+</html>

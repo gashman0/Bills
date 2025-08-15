@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  font-family: Arial, sans-serif;
+}
+.nav_bar{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    width: 100%;
+    height: 15%;
+    padding: 0 50px;
+    background-color: #2A61DE;
+}
+.logo{
+    height: 70%;
+}
+.nav ul{
+    display: flex;
+    list-style: none;
+}
+.nav ul li{
+    margin-right: 0px;
+}
+.nav ul li:last-child{
+    margin-right: 0;
+}
+.nav ul a{
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    padding: 10px 15px;
+    transition: background 0.4s ease, color 0.4s ease;
+}
+.nav ul a:hover{
+    background-color: #24396c;
+    border-radius: 5px;
+}
+.logs{
+    height: fit-content;
+    width: fit-content;
+}
+.logs button{
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+.register{
+    color: #2A61DE;
+    transition: background 0.4s ease, color 0.4s ease;
+}
+.register:hover{
+    background-color: #24396c;
+    color: white;
+}
+.login{
+    color: white;
+    background-color: rgb(81, 80, 80);
+    transition: background 0.4s ease, color 0.4s ease;
+    margin-left: 10px;
+}
+.login:hover{
+    background-color: #24396c;
+}
+.hero {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    background: linear-gradient(135deg, #2A61DE, #ffffff)
+}
+section{
+    display: flex;
+    background-color: white;
+    border-radius: 5px;
+    width: fit-content;
+    height: 90%;
+}
+.display, .form_holder{
+    height: 100%;
+    width: 30vw;
+    color: black;
+}
+.display{
+    position: relative;
+}
+.slide{
+    display: flex;
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    transition: 900ms opacity ease-in-out;
+    transition-delay: 500ms;
+}
+.slide > img{
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    height: 80%;
+    width: 80%;
+    margin: auto;
+}
+.slide[data-active]{
+    opacity: 1;
+    transition-delay: 0ms;
+}
+.carousel{
+    position: absolute;
+    z-index: 2;
+    background: none;
+    border: none;
+    font-size: 4rem;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255, 255, 255, .5);
+    cursor: pointer;
+    border-radius: .25rem;
+    padding: 0 .5rem;
+    background-color: rgba(0, 0, 0, .1);
+}
+.carousel:hover, .carousel:focus{
+    color: white;
+    background-color: rgba(0, 0, 0, .2);
+}
+.carousel:focus{
+    outline: 1px solid black;
+}
+.prev{
+    left: 1rem;
+}
+.next{
+    right: 1rem;
+}
+.form_holder{
+    width: 50vw;
+    height: 100%;
+    overflow-y: auto;
+}
+.onboard{
+    height: 30%;
+}
+.onboard_header{
+    height: 70%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 30px;
+}
+.progressbar{
+    display: flex;
+    justify-content: space-evenly;
+    list-style: none;
+    border: 2px solid gre;
+    font-weight: bold;
+}
+form{
+    text-align: left;
+    padding: 0 20px;
+}
+form input{
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    outline: none;
+    margin-bottom: 15px;
+    font-size: 14px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+form input:focus{
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+}
+.prev_btn, .next_btn{
+    background-color: #2A61DE;
+    border: none;
+    padding: 10px 15px;
+    color: white;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background 0.4s ease, color 0.4s ease;
+    cursor: pointer;
+}
+.prev_btn:hover, .next_btn:hover{
+    background-color: #24396c;
+}
+.footer{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #2A61DE;
+    height: 30%;
+}
