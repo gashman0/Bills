@@ -47,11 +47,16 @@ function showStep(stepIndex) {
     if (stepIndex === steps.length - 1) {
         next.textContent = "Submit";
         next.style.backgroundColor = "green";
+        document.getElementById('reviewStep').classList.add("active");
         displayReview(); // populate review step when we land here
     } else {
         next.textContent = "Next";
         next.style.backgroundColor = "#2A61DE";
+        document.getElementById('reviewStep').classList.remove("active");
     }
+    if(stepIndex >= steps.length - 2){
+        document.getElementById('docStep').classList.add("active");
+    } else{document.getElementById('docStep').classList.remove("active");}
 }
 
 // Next button
@@ -59,8 +64,9 @@ next.addEventListener("click", () => {
     if (!validateStep()) return;
 
     if (currentStep === steps.length - 1) {
-        // Last step → submit form
-        form.submit();
+        // Last step → display success message
+        document.getElementById("successMessage").style.display = "block";
+        document.querySelector('.buttonHolder').style.display = "none";
         return;
     }
 

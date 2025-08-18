@@ -198,8 +198,15 @@ form input:focus{
 .prev_btn{
     display: none;
 }
-.success{
+ .success {
     display: none;
+    text-align: center;
+    padding: 20px;
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    border-radius: 4px;
+    margin: 20px;
 }
 .footer{
     display: flex;
