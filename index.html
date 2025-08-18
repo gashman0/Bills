@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="./images/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="application.css">
-    <script src="application.js" defer></script>
+    <link rel="stylesheet" href="index.css">
+    <script src="index.js" defer></script>
     <title>Application Page</title>
 </head>
 <body>
@@ -47,18 +47,46 @@
                         <li>Review</li>
                     </ul>
                 </div>
-                <form>
-                    <label for="">Full Name*</label><br>
-                    <input type="text"><br>
-                    <label for="">Phone*</label><br>
-                    <input type="tel" name="" id=""><br>
-                    <label for="">Email*</label><br>
-                    <input type="email" name="" id=""><br>
-                    <label for="">Position Applied For*</label><br>
-                    <input type="text"><br>
-                    <button type="button" class="prev_btn">Previous</button>
-                    <button type="button" class="next_btn">Next</button>
+                <form id="onboardingForm">
+
+                    <!-- Step 1 -->
+                     <div class="step">
+                         <label>Full Name*</label>
+                         <input type="text" required>
+                         <label>Phone*</label>
+                         <input type="tel" name="" required>
+                         <label>Email*</label>
+                         <input type="email" name="" required>
+                         <label>Position Applied For*</label>
+                         <input type="text" required>
+                     </div>
+
+
+                    <!-- Step 2 -->
+                    <div class="step">
+                        <label>Upload Resume *</label>
+                        <input type="file" name="resume" required>
+                        <label>Upload ID *</label>
+                        <input type="file" name="id" required>
+                    </div>
+
+
+                    <!-- Step 3 -->
+                    <div class="step" id="reviewSection">
+                        <h3>Review Your Details</h3>
+                        <p><strong>Name:</strong> <span id="reviewName"></span></p>
+                        <p><strong>Email:</strong> <span id="reviewEmail"></span></p>
+                        <p><strong>Phone:</strong> <span id="reviewPhone"></span></p>
+                        <p><strong>Position:</strong> <span id="reviewPosition"></span></p>
+                    </div>
+
+
+                    <!-- Buttons -->
+                    <button type="button" class="prev_btn" id="prev_btn">Previous</button>
+                    <button type="button" class="next_btn" id="next_btn">Next</button>
                 </form>
+
+                <div class="success" id="successMessage">✅ Onboarding information submitted successfully!</div>
             </div>
         </section>
     </div>

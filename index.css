@@ -161,6 +161,9 @@ section{
     border: 2px solid gre;
     font-weight: bold;
 }
+.active{
+    color: #2A61DE;
+}
 form{
     text-align: left;
     padding: 0 20px;
@@ -191,6 +194,12 @@ form input:focus{
 }
 .prev_btn:hover, .next_btn:hover{
     background-color: #24396c;
+}
+.prev_btn{
+    display: none;
+}
+.success{
+    display: none;
 }
 .footer{
     display: flex;
