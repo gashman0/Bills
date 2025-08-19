@@ -68,6 +68,9 @@ html, body {
 .login:hover{
     background-color: #24396c;
 }
+.menu{
+    display: none;
+}
 .hero {
     height: 100%;
     display: flex;
@@ -214,4 +217,47 @@ form input:focus{
     align-items: center;
     background-color: #2A61DE;
     height: 30%;
+}
+
+
+@media(max-width: 768px){
+    .nav_bar{
+        height: 10%;
+        justify-content: space-between;
+    }
+    .logo{
+        height: 90%;
+    }
+    .nav{
+        display: none;
+    }
+    .logs{
+        display: none;
+    }
+    .menu{
+        display: block;
+        padding: 10px 15px;
+        font-size: 16px;
+        border-radius: 10px;
+        border: none;
+    }
+    .hero{
+        height: 70%;
+    }
+    section{
+        margin: 0 20px;
+        height: 90%;
+    }
+    .display{
+        display: none;
+    }
+    .form_holder{
+        width: 100%;
+    }
+    .onboard_header{
+        font-size: 24px;
+    }
+    .buttonHolder{
+        margin: 0 0 20px;
+    }
 }
