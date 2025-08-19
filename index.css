@@ -211,6 +211,16 @@ form input:focus{
     border-radius: 4px;
     margin: 20px;
 }
+.okay{
+    display: none;
+    text-align: center;
+    padding: 15px 20px;
+    border-radius: 4px;
+    margin: 0 auto;
+    border: none;
+    background-color: #2A61DE;
+    color: white;
+}
 .footer{
     display: flex;
     justify-content: center;

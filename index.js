@@ -35,6 +35,7 @@ const form = document.getElementById("onboardingForm");
 const prev = document.getElementById('prev_btn');
 const next = document.getElementById('next_btn');
 
+
 function showStep(stepIndex) {
     steps.forEach((step, i) => {
         step.style.display = i === stepIndex ? "block" : "none";
@@ -67,6 +68,8 @@ next.addEventListener("click", () => {
         // Last step → display success message
         document.getElementById("successMessage").style.display = "block";
         document.querySelector('.buttonHolder').style.display = "none";
+        document.getElementById('okay').style.display = "block";
+        document.querySelector('.success').style.display = "block";
         return;
     }
 
@@ -127,9 +130,14 @@ function displayReview() {
 
     document.getElementById("reviewPosition").textContent =
         form.querySelectorAll('input[type="text"]')[1].value; // second text input = position
+
 }
 
 // Init
 showStep(currentStep);
 
+
+function okay(){
+    location.reload();
+}
 
