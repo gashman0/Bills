@@ -220,6 +220,7 @@ form input:focus{
     border: none;
     background-color: #2A61DE;
     color: white;
+    cursor: pointer;
 }
 .footer{
     display: flex;
